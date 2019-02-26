@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	
+	<context:component-scan base-package="com.zhiyou.zn"></context:component-scan>
+	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	 <!-- 1、自动注册defaultAnnotationHandlermapping ，AnnotationMethodhandlerAdapter，可以根据URL映射到方法-->
+	 <!-- 2、数据绑定，数字和日期的format，如@NumberFormat ,@DateFormat,还有xml和json的默认读写功能 -->
+         <mvc:annotation-driven />  
+         
+     <!-- 1.加入对静态资源的处理 -->
+     <!-- 2.允许使用“/”做整体映射 -->
+     <mvc:default-servlet-handler/>
+
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value=""></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<bean id="multipartResolver" 
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	
+	<!-- 设置上传文件的大小,单位字节为10M -->
+	<property name="maxUploadSize">
+	<value>10485760</value>
+	</property>
+	<!-- 设置编码格式,必须和jsp的pageEncoding属性相同 
+		默认ISO-8859-1
+	-->
+	<property name="defaultEncoding">
+	<value>UTF-8</value>
+	</property>	
+	</bean>
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
